@@ -39,7 +39,7 @@ public class Message {
 	public void setId(Long id) {
 		this.id = id;
 	}
-//
+
 //	public User getUser() {
 //		return user;
 //	}
