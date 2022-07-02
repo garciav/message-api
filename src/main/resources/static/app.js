@@ -56,11 +56,17 @@ const disconnect = () => {
 const sendName = () => { 
     stompClient.send("/app/hello", {}, JSON.stringify({'group': {'id': group.id},'content': $("#name").val()}));
 }
-
-const showGreeting = (message) =>{
+let count = 0;
+const showGreeting = (message) => {
+	count ++ 
+	document.title = "(" + count + ") " + "Message Group";
     $("#greetings").append("<tr><td>" + message + "</td></tr>");
 }
 
+const resetNotification = () => {
+	document.title = "Message Group";
+	count = 0;
+}
 $(() => {
     $("form").on('submit', function (e) {
         e.preventDefault();
@@ -68,4 +74,6 @@ $(() => {
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendName(); });
+    
+    window.onfocus = resetNotification;
 });
