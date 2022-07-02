@@ -1,4 +1,11 @@
 
+#eclipse
+.classpath
+.factorypath
+.project
+.settings/
+
+
 #folder
 /target
 
