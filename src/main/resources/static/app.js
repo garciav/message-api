@@ -41,6 +41,8 @@ const connect = () => {
 	stompClient.subscribe('/topic/greetings', function (greeting) {
 		showGreeting(JSON.parse(greeting.body).content);
 		$("#name").val('');
+	}, function (error) {
+		alert("error!")
 	});
 });
 }

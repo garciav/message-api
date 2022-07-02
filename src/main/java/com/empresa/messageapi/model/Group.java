@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="MESSAGE_GROUP")
@@ -15,6 +18,8 @@ public class Group {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@NotEmpty(message = "El nombre no puede estar vacio")
+	@Size(min = 4, max = 20, message= "El nombre debe tener más de 4 caracteres")
 	@Column(name= "NAME")
 	private String name;
 
