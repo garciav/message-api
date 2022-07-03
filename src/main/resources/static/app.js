@@ -75,6 +75,12 @@ $(() => {
     $("form").on('submit', function (e) {
         e.preventDefault();
     });
+	const messaging = firebase.messaging();
+	messaging.onMessage((payload) => {
+		alert('Message received. ' + payload);
+		console.log('Message received. ', payload);
+	});	
+	    
     $( "#connect" ).click(function() { connect(); });
     $( "#disconnect" ).click(function() { disconnect(); });
     $( "#send" ).click(function() { sendName(); });
