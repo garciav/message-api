@@ -60,9 +60,11 @@ const sendName = () => {
 }
 let count = 0;
 const showGreeting = (message) => {
-	count ++ 
-	document.title = "(" + count + ") " + "Message Group";
-    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+	if (document.hidden) {
+		count ++ 
+		document.title = "(" + count + ") " + "Message Group";
+	}
+	$("#greetings").append("<tr><td>" + message + "</td></tr>");
 }
 
 const resetNotification = () => {
