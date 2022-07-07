@@ -38,8 +38,8 @@ const connect = () => {
 			});
 		});
 
-	stompClient.subscribe('/topic/message', function (greeting) {
-		showGreeting(JSON.parse(greeting.body).content);
+	stompClient.subscribe('/topic/message', function (resp) {
+		showGreeting(JSON.parse(resp.body).body.payload.content);
 		$("#name").val('');
 	}, function (error) {
 		alert("error!")

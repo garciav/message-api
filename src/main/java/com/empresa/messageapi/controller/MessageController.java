@@ -37,8 +37,7 @@ public class MessageController {
 	}
 
 	@PostMapping(value = "messages")
-	public ResponseEntity<?> newProduct(@Valid @RequestBody Message message, BindingResult result) {
-		
+	public ResponseEntity<?> newMessage(@Valid @RequestBody Message message, BindingResult result) {
 		HashMap<String, Object> response = new HashMap<>();
         if(result.hasErrors()) {
 	        List<String> errores = result.getFieldErrors()
@@ -48,9 +47,9 @@ public class MessageController {
 	        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
         }
 
-        response.put("mensaje", "Mensaje creado con exito");
+        response.put("message", "Mensaje creado con exito");
         Message create = messageService.create(message);
-		response.put("grupo", create);
+		response.put("payload", create);
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
 }
