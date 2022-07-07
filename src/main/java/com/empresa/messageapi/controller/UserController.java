@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.empresa.messageapi.model.User;
@@ -20,6 +21,11 @@ public class UserController {
 	@PostMapping(value = "users")
 	public User createUser(@RequestBody User user) {
 		return userService.create(user);
+	}
+
+	@GetMapping(value = "users/{email}")
+	public User createUser(@RequestParam String email) {
+		return userService.findByEmail(email);
 	}
 
 	@GetMapping(value = "users")
