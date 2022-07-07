@@ -38,7 +38,7 @@ const connect = () => {
 			});
 		});
 
-	stompClient.subscribe('/topic/greetings', function (greeting) {
+	stompClient.subscribe('/topic/message', function (greeting) {
 		showGreeting(JSON.parse(greeting.body).content);
 		$("#name").val('');
 	}, function (error) {
@@ -56,7 +56,7 @@ const disconnect = () => {
 }
 
 const sendName = () => { 
-    stompClient.send("/app/hello", {}, JSON.stringify({'group': {'id': group.id},'content': $("#name").val()}));
+    stompClient.send("/app/message", {}, JSON.stringify({'group': {'id': group.id},'content': $("#name").val()}));
 }
 let count = 0;
 const showGreeting = (message) => {
